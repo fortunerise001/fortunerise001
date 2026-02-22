@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Create Household</title>
+</head>
+
+<body>
+    <h1>Create Household and Members</h1>
+    <form method="post">
+        {% csrf_token %}
+        <fieldset>
+            <legend>Household</legend>
+            {{ hform.as_p }}
+        </fieldset>
+
+        <fieldset>
+            <legend>Members</legend>
+            {{ formset.management_form }}
+            {% for form in formset.forms %}
+            <div style="border:1px solid #ccc; padding:8px; margin:6px 0;">
+                {{ form.as_p }}
+                {% if form.instance.pk %}
+                <p>Existing member</p>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </fieldset>
+
+        <button type="submit">Save</button>
+    </form>
+</body>
+
+</html>
