@@ -23,7 +23,7 @@ def create_household(request):
             # handle deleted forms
             for deleted in formset.deleted_objects:
                 deleted.delete()
-            return redirect("household_success")
+            return redirect("household_list")
     else:
         hform = HouseholdForm()
         formset = PersonFormSet()

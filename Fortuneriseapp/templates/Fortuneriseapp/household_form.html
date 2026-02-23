@@ -7,7 +7,7 @@
 </head>
 
 <body>
-    <h1>Create Household and Members</h1>
+    <h1>{% if hform.instance.pk %}Edit{% else %}Create{% endif %} Household and Members</h1>
     <form method="post">
         {% csrf_token %}
         <fieldset>
