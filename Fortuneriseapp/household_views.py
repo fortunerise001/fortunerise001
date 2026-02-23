@@ -1,7 +1,12 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.forms import inlineformset_factory
 from .models import Household, Person
 from .forms import HouseholdForm, PersonForm
+
+
+def list_households(request):
+    households = Household.objects.all()
+    return render(request, "Fortuneriseapp/household_list.html", {"households": households})
 
 
 def create_household(request):
